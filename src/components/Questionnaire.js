@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router"
+
 function Questionnaire() {
+ const navigate = useNavigate()
+
     const questionChangeHandler = () => {
-        
+        navigate('/PersonalInformation')
     }
 
   return (
