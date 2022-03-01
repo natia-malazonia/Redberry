@@ -1,9 +1,10 @@
 import Input from '../UI/Input'
 import useInput from '../hooks/useInput'
 import { useNavigate } from 'react-router'
+import { validate } from 'react-email-validator'
 
 function PersonalInformation() {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const {
     value: enteredName,
@@ -13,16 +14,31 @@ function PersonalInformation() {
     inputBlurHandler: nameBlurHandler,
   } = useInput((value) => value.trim().length > 2)
 
+  const {
+    value: enteredLastName,
+    isValid: enteredLastNameIsValid,
+    hasError: lastNameInputHasError,
+    valueChangeHandler: lastNameChangedHandler,
+    inputBlurHandler: lastNameBlurHandler,
+  } = useInput((value) => value.trim().length > 2)
+
+  const {
+    value: enteredEmail,
+    isValid: enteredEmailIsValid,
+    hasError: emailInputHasError,
+    valueChangeHandler: emailChangedHandler,
+    inputBlurHandler: emailBlurHandler,
+  } = useInput((value) => validate(value))
 
   const nextPageChangeHandler = () => {
     navigate('/')
-}
+  }
 
   const formSubmissionHandler = (event) => {
     event.preventDefault()
 
-    if(!enteredNameIsValid) {
-        return
+    if (!enteredNameIsValid || !enteredLastNameIsValid || !enteredEmailIsValid) {
+      return
     }
 
     nextPageChangeHandler()
@@ -43,11 +59,29 @@ function PersonalInformation() {
             error={nameInputHasError}
             errorText={'Empty Value'}
           />
-          <Input name="lastName" type="text" placeholder="Last Name" />
-          <Input name="email" type="email" placeholder="E Mail" />
+          <Input
+            name="lastName"
+            type="text"
+            placeholder="Last Name"
+            value={enteredLastName}
+            onChange={lastNameChangedHandler}
+            onBlur={lastNameBlurHandler}
+            error={lastNameInputHasError}
+            errorText={'Empty Value'}
+          />
+          <Input
+            name="email"
+            type="email"
+            placeholder="E Mail"
+            value={enteredEmail}
+            onChange={emailChangedHandler}
+            onBlur={emailBlurHandler}
+            error={emailInputHasError}
+            errorText={'Empty Value'}
+          />
           <Input name="mobile" type="tel" placeholder="+995 5____" />
           <button>prev</button>
-          <button >next</button>
+          <button>next</button>
         </form>
       </div>
 
