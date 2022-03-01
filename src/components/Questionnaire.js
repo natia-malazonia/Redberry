@@ -1,9 +1,15 @@
 function Questionnaire() {
-    return <div>
-        <h1>Welcome Rocketeer!</h1>
-        <button>Start Questionnaire</button>
-        <span>Submitted applications</span>
+    const questionChangeHandler = () => {
+        
+    }
+
+  return (
+    <div>
+      <h1>Welcome Rocketeer !</h1>
+      <button onClick={questionChangeHandler}>Start Questionnaire</button>
+      <span>Submitted applications</span>
     </div>
+  )
 }
 
 export default Questionnaire
