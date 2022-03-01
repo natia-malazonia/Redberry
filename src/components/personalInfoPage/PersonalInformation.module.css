@@ -1,0 +1,164 @@
+.personalInfoContainer {
+  display: flex;
+  flex-flow: row wrap;
+  height: 100%;
+}
+
+.leftSide,
+.rightSide {
+  width: 50%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.header_1 {
+  position: absolute;
+  width: 716px;
+  height: 128px;
+  left: 105px;
+  top: 131px;
+  font-family: 'Rowdies', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 79px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fe3b1f;
+}
+
+.inputFname,
+.inputLname,
+.inputEmail,
+.inputTel {
+  position: absolute;
+  width: 455px;
+  height: 54px;
+  left: 235px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  box-sizing: border-box;
+  padding-left: 57px;
+}
+
+.inputFname::placeholder,
+.inputLname::placeholder,
+.inputEmail::placeholder,
+.inputTel::placeholder {
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  color: #454545;
+  position: absolute;
+  left: 57px;
+  top: 17px;
+}
+
+.inputFname {
+  top: 390px;
+}
+
+.inputLname {
+  top: 481px;
+}
+
+.inputEmail {
+  top: 570px;
+}
+
+.inputTel {
+  top: 675px;
+}
+
+.inputFname:invalid,
+.inputLname:invalid,
+.inputEmail:invalid,
+.inputTel:invalid {
+  border: 1px solid #fe3b1f;
+}
+
+.errorTextName,
+.errorTextLast,
+.errorTextEmail,
+.errorTextTel {
+  position: absolute;
+  width: 209px;
+  height: 16px;
+  left: 290px;
+  top: 453px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13px;
+  display: flex;
+  align-items: center;
+  color: #fe3b1f;
+}
+
+.errorTextLast{
+    top: 545px;
+}
+
+.errorTextEmail {
+    top: 630px;
+}
+
+.errorTextTel {
+    top: 737px;
+}
+
+.btnPrev,
+.btnNext {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 554px;
+  top: 904px;
+  border: 3px solid #fe3b1f;
+  border-radius: 50%;
+}
+
+.btnPrev {
+  left: 359px;
+}
+
+.rightSide {
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+}
+
+.rightSideHeader {
+  position: absolute;
+  width: 716px;
+  height: 94px;
+  left: 1116px;
+  top: 112px;
+  font-family: 'Rowdies', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 79px;
+  display: flex;
+  align-items: center;
+  color: #fe3b1f;
+}
+
+.rightSide > p {
+  position: absolute;
+  width: 705px;
+  height: 606px;
+  left: 1119px;
+  top: 195px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 200%;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}

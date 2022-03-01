@@ -1,7 +1,7 @@
 import './App.css';
 import { Route, Routes } from 'react-router-dom'
-import Questionnaire from './components/Questionnaire';
-import PersonalInformation from './components/PersonalInformation';
+import Questionnaire from './components/questionnaire/Questionnaire';
+import PersonalInformation from './components/personalInfoPage/PersonalInformation';
 
 function App() {
   return (
