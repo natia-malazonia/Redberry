@@ -4,8 +4,12 @@ function Input(props) {
       <input
         name={props.name}
         type={props.type}
-        value={props.value}
         placeholder={props.placeholder}
+        value={props.value}
+        onChange={props.onChange}
+        onBlur={props.onBlur}
+        error={props.error}
+        errorText={props.errorText}
       />
     </div>
   )

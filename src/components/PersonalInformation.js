@@ -1,16 +1,54 @@
 import Input from '../UI/Input'
+import useInput from '../hooks/useInput'
+import { useNavigate } from 'react-router'
 
 function PersonalInformation() {
+    const navigate = useNavigate()
+
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangedHandler,
+    inputBlurHandler: nameBlurHandler,
+  } = useInput((value) => value.trim().length > 2)
+
+
+  const nextPageChangeHandler = () => {
+    navigate('/')
+}
+
+  const formSubmissionHandler = (event) => {
+    event.preventDefault()
+
+    if(!enteredNameIsValid) {
+        return
+    }
+
+    nextPageChangeHandler()
+  }
+
   return (
     <div>
       <div>
         <h1>Hey, Rocketeer, what are your coordinates?</h1>
-        <Input name="firstName" type="text" placeholder="First Name" />
-        <Input name="lastName" type="text" placeholder="Last Name" />
-        <Input name="email" type="email" placeholder="E Mail" />
-        <Input name="mobile" type="tel" placeholder="+995 5____" />
-        <button>prev</button>
-        <button>next</button>
+        <form onSubmit={formSubmissionHandler}>
+          <Input
+            name="firstName"
+            type="text"
+            placeholder="First Name"
+            value={enteredName}
+            onChange={nameChangedHandler}
+            onBlur={nameBlurHandler}
+            error={nameInputHasError}
+            errorText={'Empty Value'}
+          />
+          <Input name="lastName" type="text" placeholder="Last Name" />
+          <Input name="email" type="email" placeholder="E Mail" />
+          <Input name="mobile" type="tel" placeholder="+995 5____" />
+          <button>prev</button>
+          <button >next</button>
+        </form>
       </div>
 
       <div>
