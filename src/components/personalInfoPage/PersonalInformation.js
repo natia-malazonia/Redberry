@@ -45,7 +45,7 @@ function PersonalInformation() {
     let val = value ? value.trim() : null
     if (!val) {
       return true
-    } else if (val.length === 12 && val.startsWith('9955')) {
+    } else if (val.length === 13 && val.startsWith('+9955')) {
       return true
     }
     return false
