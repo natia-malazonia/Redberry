@@ -28,87 +28,8 @@
   color: #fe3b1f;
 }
 
-.inputFname,
-.inputLname,
-.inputEmail,
-.inputTel {
-  position: absolute;
-  width: 455px;
-  height: 54px;
-  left: 235px;
-  background: #ffffff;
-  border: 1px solid #525557;
-  box-sizing: border-box;
-  padding-left: 57px;
-}
-
-.inputFname::placeholder,
-.inputLname::placeholder,
-.inputEmail::placeholder,
-.inputTel::placeholder {
-  font-family: 'Montserrat', sans-serif;
-  font-style: italic;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  color: #454545;
-  position: absolute;
-  left: 57px;
-  top: 17px;
-}
-
-.inputFname {
-  top: 390px;
-}
-
-.inputLname {
-  top: 481px;
-}
-
-.inputEmail {
-  top: 570px;
-}
-
-.inputTel {
-  top: 675px;
-}
-
-.inputFname:invalid,
-.inputLname:invalid,
-.inputEmail:invalid,
-.inputTel:invalid {
-  border: 1px solid #fe3b1f;
-}
-
-.errorTextName,
-.errorTextLast,
-.errorTextEmail,
-.errorTextTel {
-  position: absolute;
-  width: 209px;
-  height: 16px;
-  left: 290px;
-  top: 453px;
-  font-family: 'Montserrat', sans-serif;
-  font-style: italic;
-  font-weight: 400;
-  font-size: 11px;
-  line-height: 13px;
-  display: flex;
-  align-items: center;
-  color: #fe3b1f;
-}
-
-.errorTextLast{
-    top: 545px;
-}
-
-.errorTextEmail {
-    top: 630px;
-}
-
-.errorTextTel {
-    top: 737px;
+.form {
+  margin-top: 35%;
 }
 
 .btnPrev,
@@ -117,7 +38,7 @@
   width: 18px;
   height: 18px;
   left: 554px;
-  top: 904px;
+  top: 83%;
   border: 3px solid #fe3b1f;
   border-radius: 50%;
 }
