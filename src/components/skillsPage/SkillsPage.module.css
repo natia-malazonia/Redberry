@@ -1,0 +1,76 @@
+.form {
+  margin-top: 35%;
+}
+
+.select,
+.skill {
+  width: 455px;
+  height: 54px;
+  margin-left: 235px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  box-sizing: border-box;
+  padding-left: 57px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #454545;
+}
+
+.prLanguage {
+  position: absolute;
+  width: 201px;
+  height: 32px;
+  left: 489px;
+  top: 470px;
+  background: #fe3b1f;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.63px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.skillsContainer {
+  margin-top: 108px;
+}
+
+.skill {
+  width: 447px;
+  height: 48px;
+  margin-left: 237px;
+  display: flex;
+  align-items: center;
+}
+
+.skillBtn {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #fe3b1f;
+  border-radius: 50%;
+  margin-left: 43%;
+  color: #fe3b1f;
+  cursor: pointer;
+}
+
+.btnPrev,
+.btnNext {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 554px;
+  top: 83%;
+  border: 3px solid #fe3b1f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btnPrev {
+  left: 359px;
+}

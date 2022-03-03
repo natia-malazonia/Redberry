@@ -53,7 +53,7 @@ function PersonalInformation() {
   })
 
   const nextPageChangeHandler = () => {
-    navigate('/')
+    navigate('/skills-page')
   }
 
   const formSubmissionHandler = (event) => {

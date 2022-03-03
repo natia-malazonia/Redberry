@@ -11,6 +11,7 @@
   top: 83%;
   border: 3px solid #fe3b1f;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .btnPrev {
