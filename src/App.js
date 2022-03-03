@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Questionnaire from './components/questionnaire/Questionnaire';
 import PersonalInformation from './components/personalInfoPage/PersonalInformation';
 import SkillsPage from './components/skillsPage/SkillsPage';
+import CovidPage from './components/covidPage/CovidPage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Questionnaire />} />
         <Route path="/PersonalInformation" element={<PersonalInformation/>} />
         <Route path="/skills-page" element={<SkillsPage />} />
+        <Route path="/covid-page" element={<CovidPage />} />
       </Routes>
     </div>
   );

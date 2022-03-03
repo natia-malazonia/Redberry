@@ -17,7 +17,7 @@ function SkillsPage() {
   } = useInput((value) => value.trim().length > 0)
 
   const nextPageChangeHandler = () => {
-    navigate('/')
+    navigate('/covid-page')
   }
 
   const formSubmissionHandler = (event) => {
