@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router'
 import { validate } from 'react-email-validator'
 import styles from './PersonalInformation.module.css'
 import Input from '../../UI/Input'
+import BaseLayout from '../../UI/BaseLayout'
 
 function PersonalInformation() {
   const navigate = useNavigate()
@@ -71,76 +72,69 @@ function PersonalInformation() {
   }
 
   return (
-    <div className={styles.personalInfoContainer}>
-      <div className={styles.leftSide}>
-        <h1 className={styles.header_1}>
-          Hey, Rocketeer, what are your coordinates?
-        </h1>
+    <BaseLayout
+      leftSideHeader={'Hey, Rocketeer, what are your coordinates?'}
+      rightSideHeader={'Redberry Origins'}
+      text={`You watch “What? Where? When?” Yeah. Our founders used to play it.
+           That’s where they got a question about a famous American author and
+           screenwriter Ray Bradbury. Albeit, our CEO Gaga Darsalia forgot the
+           exact name and he answered Ray Redberry. And at that moment, a name
+           for a yet to be born company was inspired - Redberry 😇`}
+    >
         <form onSubmit={formSubmissionHandler} className={styles.form}>
-          <Input
-            name="firstName"
-            type="text"
-            placeholder="First Name"
-            value={enteredName}
-            onChange={nameChangedHandler}
-            onBlur={nameBlurHandler}
-            hasError={nameInputHasError}
-            isTouched={nameInputIsTouched}
-            errorText={'* First name should include 3 or more characters'}
-          />
 
-          <Input
-            name="lastName"
-            type="text"
-            placeholder="Last Name"
-            value={enteredLastName}
-            onChange={lastNameChangedHandler}
-            onBlur={lastNameBlurHandler}
-            hasError={lastNameInputHasError}
-            isTouched={lastNameInputIsTouched}
-            errorText={'* Last name should include 3 or more characters'}
-          />
+      <Input
+        name="firstName"
+        type="text"
+        placeholder="First Name"
+        value={enteredName}
+        onChange={nameChangedHandler}
+        onBlur={nameBlurHandler}
+        hasError={nameInputHasError}
+        isTouched={nameInputIsTouched}
+        errorText={'* First name should include 3 or more characters'}
+      />
 
-          <Input
-            name="email"
-            type="email"
-            placeholder="E Mail"
-            value={enteredEmail}
-            onChange={emailChangedHandler}
-            onBlur={emailBlurHandler}
-            hasError={emailInputHasError}
-            isTouched={emailInputIsTouched}
-            errorText={'*Incorrect Email Address'}
-          />
+      <Input
+        name="lastName"
+        type="text"
+        placeholder="Last Name"
+        value={enteredLastName}
+        onChange={lastNameChangedHandler}
+        onBlur={lastNameBlurHandler}
+        hasError={lastNameInputHasError}
+        isTouched={lastNameInputIsTouched}
+        errorText={'* Last name should include 3 or more characters'}
+      />
 
-          <Input
-            name="mobile"
-            type="tel"
-            placeholder="+995 5__ __ __ __"
-            value={enteredMobilenum}
-            onChange={mobilenumChangedHandler}
-            onBlur={mobilenumBlurHandler}
-            hasError={mobilenumInputHasError}
-            isTouched={mobileInputIsTouched}
-            errorText={'*Incorrect Phone Number'}
-          />
-           
-          <button className={styles.btnPrev}></button>
-          <button className={styles.btnNext}></button>
-        </form>
-      </div>
+      <Input
+        name="email"
+        type="email"
+        placeholder="E Mail"
+        value={enteredEmail}
+        onChange={emailChangedHandler}
+        onBlur={emailBlurHandler}
+        hasError={emailInputHasError}
+        isTouched={emailInputIsTouched}
+        errorText={'*Incorrect Email Address'}
+      />
 
-      <div className={styles.rightSide}>
-        <h1 className={styles.rightSideHeader}>Redberry Origins</h1>
-        <p>
-          You watch “What? Where? When?” Yeah. Our founders used to play it.
-          That’s where they got a question about a famous American author and
-          screenwriter Ray Bradbury. Albeit, our CEO Gaga Darsalia forgot the
-          exact name and he answered Ray Redberry. And at that moment, a name
-          for a yet to be born company was inspired - Redberry 😇
-        </p>
-      </div>
-    </div>
+      <Input
+        name="mobile"
+        type="tel"
+        placeholder="+995 5__ __ __ __"
+        value={enteredMobilenum}
+        onChange={mobilenumChangedHandler}
+        onBlur={mobilenumBlurHandler}
+        hasError={mobilenumInputHasError}
+        isTouched={mobileInputIsTouched}
+        errorText={'*Incorrect Phone Number'}
+      />
+
+      <button className={styles.btnPrev}></button>
+      <button className={styles.btnNext}></button>
+      </form>
+    </BaseLayout>
   )
 }
 
