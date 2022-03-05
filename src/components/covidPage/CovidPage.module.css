@@ -1,0 +1,49 @@
+.questionnaireContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 166px;
+}
+
+.workEnvironment,
+.covidContact,
+.contactDate,
+.vaccine,
+.vaccineDate {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+}
+
+.covidContact,
+.contactDate,
+.vaccine,
+.vaccineDate {
+    margin-top: 51px;
+}
+
+.workEnvironment > p,
+.covidContact > p,
+.contactDate > p,
+.vaccine > p,
+.vaccineDate > p {
+  margin-bottom: 15px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+}
+
+.workEnvironment > div > label,
+.covidContact > div > label,
+.contactDate > div > label,
+.vaccine > div > label,
+.vaccineDate > div > label {
+    font-size: 14px;
+    margin-left: 7px;
+}
+
+.workEnvironment > div,
+.covidContact > div,
+.contactDate > div,
+.vaccine > div,
+.vaccineDate > div {
+    margin-bottom: 17px;
+}

@@ -1,7 +1,3 @@
-.form {
-  margin-top: 35%;
-}
-
 .select,
 .skill {
   width: 455px;
@@ -58,20 +54,4 @@
   margin-left: 43%;
   color: #fe3b1f;
   cursor: pointer;
-}
-
-.btnPrev,
-.btnNext {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  left: 554px;
-  top: 83%;
-  border: 3px solid #fe3b1f;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.btnPrev {
-  left: 359px;
 }

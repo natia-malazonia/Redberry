@@ -4,12 +4,13 @@ import Input from '../../UI/Input'
 import useInput from '../../hooks/useInput'
 
 function CovidPage() {
-  const {
-    value: office,
-  } = useInput((value) => value.trim().length > 0)
+  function formIsValid() {}
 
   return (
     <BaseLayout
+      previousPageUrl={'/skills-page'}
+      nextPageUrl={'/'}
+      allowNextPage={formIsValid()}
       leftSideHeader={'Covid Stuff'}
       rightSideHeader={'Redberry Covid Policies'}
       text={`As this infamous pandemic took over the world, we adjusted our 
@@ -20,8 +21,81 @@ function CovidPage() {
       communications > Zoom meetings. Both on the fun and productivity scales. `}
     >
       <form>
-          <p>How would you prefer to work?</p>
-       
+        <div className={styles.questionnaireContainer}>
+          <div className={styles.workEnvironment}>
+            <p>How would you prefer to work?</p>
+            <div>
+              <input type="radio" id="office" name="office" value="office" />
+              <label for="office">From Sairme Office</label>
+            </div>
+
+            <div>
+              <input type="radio" id="home" name="home" value="home" />
+              <label for="home">From Home</label>
+            </div>
+
+            <div>
+              <input type="radio" id="hybrid" name="hybrid" value="hybrid" />
+              <label for="home">Hybrid</label>
+            </div>
+          </div>
+
+          <div className={styles.covidContact}>
+            <p>Did you contact covid19? :( </p>
+            <div>
+              <input
+                type="radio"
+                id="covContact"
+                name="covContact"
+                value="covContact"
+              />
+              <label for="covContact">Yes</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="covContactNo"
+                name="covContactNo"
+                value="covContactNo"
+              />
+              <label for="covContactNo">No</label>
+            </div>
+          </div>
+
+          <div className={styles.contactDate}>
+            <p>When?</p>
+            <Input type="date" name="covidDate" placeholder="Date" />
+          </div>
+
+          <div className={styles.vaccine}>
+            <p>Have you been vaccinated? </p>
+            <div>
+              <input
+                type="radio"
+                id="covidVaccine"
+                name="covidVaccine"
+                value="covidVaccine"
+              />
+              <label for="covidVaccine">Yes</label>
+            </div>
+
+            <div>
+              <input
+                type="radio"
+                id="covidVaccineNo"
+                name="covidVaccineNo"
+                value="covidVaccineNo"
+              />
+              <label for="covidVaccineNo">No</label>
+            </div>
+          </div>
+
+          <div className={styles.vaccineDate}>
+            <p>When did you get your last covid vaccine?</p>
+            <Input type="date" name="vaccineDate" placeholder="Date" />
+          </div>
+        </div>
       </form>
     </BaseLayout>
   )

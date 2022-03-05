@@ -2,11 +2,8 @@ import styles from './SkillsPage.module.css'
 import BaseLayout from '../../UI/BaseLayout'
 import Input from '../../UI/Input'
 import useInput from '../../hooks/useInput'
-import { useNavigate } from 'react-router'
 
 function SkillsPage() {
-  const navigate = useNavigate()
-
   const {
     value: enteredSkill,
     isValid: enteredSkillIsValid,
@@ -16,22 +13,19 @@ function SkillsPage() {
     isTouched: skillInputIsTouched,
   } = useInput((value) => value.trim().length > 0)
 
-  const nextPageChangeHandler = () => {
-    navigate('/covid-page')
-  }
-
   const formSubmissionHandler = (event) => {
     event.preventDefault()
+  }
 
-    if (!enteredSkillIsValid) {
-      return
-    }
-
-    nextPageChangeHandler()
+  function formIsValid() {
+    return enteredSkillIsValid
   }
 
   return (
     <BaseLayout
+      previousPageUrl={'/PersonalInformation'}
+      nextPageUrl={'/covid-page'}
+      allowNextPage={formIsValid()}
       leftSideHeader={'Tell us about your skills'}
       rightSideHeader={'A bit about our battles'}
       text={`As we said, Redberry has been on the field for quite some time now, 
@@ -69,8 +63,6 @@ function SkillsPage() {
             <button className={styles.skillBtn}>-</button>
           </div>
         </div>
-        <button className={styles.btnPrev}></button>
-        <button className={styles.btnNext}></button>
       </form>
     </BaseLayout>
   )

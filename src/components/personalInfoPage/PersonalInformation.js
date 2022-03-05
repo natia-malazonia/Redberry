@@ -1,12 +1,9 @@
 import useInput from '../../hooks/useInput'
-import { useNavigate } from 'react-router'
 import { validate } from 'react-email-validator'
-import styles from './PersonalInformation.module.css'
 import Input from '../../UI/Input'
 import BaseLayout from '../../UI/BaseLayout'
 
 function PersonalInformation() {
-  const navigate = useNavigate()
 
   const {
     value: enteredName,
@@ -52,27 +49,25 @@ function PersonalInformation() {
     return false
   })
 
-  const nextPageChangeHandler = () => {
-    navigate('/skills-page')
-  }
-
   const formSubmissionHandler = (event) => {
     event.preventDefault()
 
-    if (
-      !enteredNameIsValid ||
-      !enteredLastNameIsValid ||
-      !enteredEmailIsValid ||
-      !enteredMobilenumIsValid
-    ) {
-      return
-    }
+  }
 
-    nextPageChangeHandler()
+  function formIsValid() {
+    return (
+      enteredNameIsValid &&
+      enteredLastNameIsValid &&
+      enteredEmailIsValid &&
+      enteredMobilenumIsValid
+    )
   }
 
   return (
     <BaseLayout
+      previousPageUrl={'/'}
+      nextPageUrl={'/skills-page'}
+      allowNextPage={formIsValid()}
       leftSideHeader={'Hey, Rocketeer, what are your coordinates?'}
       rightSideHeader={'Redberry Origins'}
       text={`You watch “What? Where? When?” Yeah. Our founders used to play it.
@@ -81,58 +76,54 @@ function PersonalInformation() {
            exact name and he answered Ray Redberry. And at that moment, a name
            for a yet to be born company was inspired - Redberry 😇`}
     >
-        <form onSubmit={formSubmissionHandler} className={styles.form}>
+      <form onSubmit={formSubmissionHandler}>
+        <Input
+          name="firstName"
+          type="text"
+          placeholder="First Name"
+          value={enteredName}
+          onChange={nameChangedHandler}
+          onBlur={nameBlurHandler}
+          hasError={nameInputHasError}
+          isTouched={nameInputIsTouched}
+          errorText={'* First name should include 3 or more characters'}
+        />
 
-      <Input
-        name="firstName"
-        type="text"
-        placeholder="First Name"
-        value={enteredName}
-        onChange={nameChangedHandler}
-        onBlur={nameBlurHandler}
-        hasError={nameInputHasError}
-        isTouched={nameInputIsTouched}
-        errorText={'* First name should include 3 or more characters'}
-      />
+        <Input
+          name="lastName"
+          type="text"
+          placeholder="Last Name"
+          value={enteredLastName}
+          onChange={lastNameChangedHandler}
+          onBlur={lastNameBlurHandler}
+          hasError={lastNameInputHasError}
+          isTouched={lastNameInputIsTouched}
+          errorText={'* Last name should include 3 or more characters'}
+        />
 
-      <Input
-        name="lastName"
-        type="text"
-        placeholder="Last Name"
-        value={enteredLastName}
-        onChange={lastNameChangedHandler}
-        onBlur={lastNameBlurHandler}
-        hasError={lastNameInputHasError}
-        isTouched={lastNameInputIsTouched}
-        errorText={'* Last name should include 3 or more characters'}
-      />
+        <Input
+          name="email"
+          type="email"
+          placeholder="E Mail"
+          value={enteredEmail}
+          onChange={emailChangedHandler}
+          onBlur={emailBlurHandler}
+          hasError={emailInputHasError}
+          isTouched={emailInputIsTouched}
+          errorText={'*Incorrect Email Address'}
+        />
 
-      <Input
-        name="email"
-        type="email"
-        placeholder="E Mail"
-        value={enteredEmail}
-        onChange={emailChangedHandler}
-        onBlur={emailBlurHandler}
-        hasError={emailInputHasError}
-        isTouched={emailInputIsTouched}
-        errorText={'*Incorrect Email Address'}
-      />
-
-      <Input
-        name="mobile"
-        type="tel"
-        placeholder="+995 5__ __ __ __"
-        value={enteredMobilenum}
-        onChange={mobilenumChangedHandler}
-        onBlur={mobilenumBlurHandler}
-        hasError={mobilenumInputHasError}
-        isTouched={mobileInputIsTouched}
-        errorText={'*Incorrect Phone Number'}
-      />
-
-      <button className={styles.btnPrev}></button>
-      <button className={styles.btnNext}></button>
+        <Input
+          name="mobile"
+          type="tel"
+          placeholder="+995 5__ __ __ __"
+          value={enteredMobilenum}
+          onChange={mobilenumChangedHandler}
+          onBlur={mobilenumBlurHandler}
+          hasError={mobilenumInputHasError}
+          isTouched={mobileInputIsTouched}
+          errorText={'*Incorrect Phone Number'}
+        />
       </form>
     </BaseLayout>
   )

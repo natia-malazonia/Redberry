@@ -1,11 +1,11 @@
 .inputContainer {
   margin-bottom: 37px;
+  margin-left: 235px;
 }
 
 .input {
   width: 455px;
   height: 54px;
-  margin-left: 235px;
   background: #ffffff;
   border: 1px solid #525557;
   box-sizing: border-box;

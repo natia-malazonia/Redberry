@@ -8,24 +8,33 @@
 .rightSide {
   width: 50%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column;
 }
 
 .header_1 {
-  position: absolute;
-  width: 716px;
-  height: 128px;
-  left: 105px;
-  top: 131px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 76px;
+}
+
+.header_1 > h1 {
   font-family: 'Rowdies', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
-  line-height: 79px;
-  display: flex;
-  align-items: center;
-  text-align: center;
+  width: 716px;
   color: #fe3b1f;
+}
+
+.formContainer {
+  margin-top: 110px;
+}
+
+.btnContainer {
+  margin-top: 90px;
+  height: 18px;
 }
 
 .rightSide {
@@ -33,18 +42,19 @@
 }
 
 .rightSideHeader {
-  position: absolute;
-  width: 716px;
-  height: 94px;
-  left: 1116px;
-  top: 112px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-top: 76px;
+}
+
+.rightSideHeader > h1 {
+  width: 788px;
   font-family: 'Rowdies', cursive;
   font-style: normal;
   font-weight: 400;
   font-size: 64px;
-  line-height: 79px;
-  display: flex;
-  align-items: center;
   color: #fe3b1f;
 }
 
@@ -63,4 +73,19 @@
   align-items: center;
   letter-spacing: 0.05em;
   color: #ffffff;
+}
+
+.btnPrev,
+.btnNext {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  left: 554px;
+  border: 3px solid #fe3b1f;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btnPrev {
+  left: 359px;
 }
