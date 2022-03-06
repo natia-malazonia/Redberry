@@ -2,7 +2,6 @@
 .skill {
   width: 455px;
   height: 54px;
-  margin-left: 235px;
   background: #ffffff;
   border: 1px solid #525557;
   box-sizing: border-box;
@@ -41,7 +40,6 @@
 .skill {
   width: 447px;
   height: 48px;
-  margin-left: 237px;
   display: flex;
   align-items: center;
 }

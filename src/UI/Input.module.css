@@ -1,6 +1,5 @@
 .inputContainer {
   margin-bottom: 37px;
-  margin-left: 235px;
 }
 
 .input {
@@ -26,7 +25,6 @@
   font-style: italic;
   font-weight: normal;
   font-size: 14px;
-  line-height: 17px;
   color: #454545;
   position: absolute;
   left: 57px;

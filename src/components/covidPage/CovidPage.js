@@ -1,10 +1,17 @@
-import styles from './CovidPage.module.css'
 import BaseLayout from '../../UI/BaseLayout'
-import Input from '../../UI/Input'
+import styles from './CovidPage.module.css'
 import useInput from '../../hooks/useInput'
+
+import Input from '../../UI/Input'
+import DatePicker from 'react-datepicker'
+
+import 'react-datepicker/dist/react-datepicker.css'
+import { useState } from 'react'
 
 function CovidPage() {
   function formIsValid() {}
+  const [covidContactDate, setCovidContactDate] = useState()
+  const [vacineDate, setVacineDate] = useState()
 
   return (
     <BaseLayout
@@ -26,17 +33,17 @@ function CovidPage() {
             <p>How would you prefer to work?</p>
             <div>
               <input type="radio" id="office" name="office" value="office" />
-              <label for="office">From Sairme Office</label>
+              <label htmlFor="office">From Sairme Office</label>
             </div>
 
             <div>
               <input type="radio" id="home" name="home" value="home" />
-              <label for="home">From Home</label>
+              <label htmlFor="home">From Home</label>
             </div>
 
             <div>
               <input type="radio" id="hybrid" name="hybrid" value="hybrid" />
-              <label for="home">Hybrid</label>
+              <label htmlFor="home">Hybrid</label>
             </div>
           </div>
 
@@ -49,7 +56,7 @@ function CovidPage() {
                 name="covContact"
                 value="covContact"
               />
-              <label for="covContact">Yes</label>
+              <label htmlFor="covContact">Yes</label>
             </div>
 
             <div>
@@ -59,13 +66,27 @@ function CovidPage() {
                 name="covContactNo"
                 value="covContactNo"
               />
-              <label for="covContactNo">No</label>
+              <label htmlFor="covContactNo">No</label>
             </div>
           </div>
 
           <div className={styles.contactDate}>
             <p>When?</p>
-            <Input type="date" name="covidDate" placeholder="Date" />
+            <DatePicker
+              className={styles.datePickerInput}
+              selected={covidContactDate}
+              onChange={(date) => {
+                setCovidContactDate(date)
+              }}
+              closeOnScroll={true}
+              placeholderText="Date"
+            />
+            <img
+              src={require('../../assets/images/calendar.png')}
+              alt="calendar"
+              className={styles.calendarLogo_1}
+              
+            />
           </div>
 
           <div className={styles.vaccine}>
@@ -77,7 +98,7 @@ function CovidPage() {
                 name="covidVaccine"
                 value="covidVaccine"
               />
-              <label for="covidVaccine">Yes</label>
+              <label htmlFor="covidVaccine">Yes</label>
             </div>
 
             <div>
@@ -87,13 +108,26 @@ function CovidPage() {
                 name="covidVaccineNo"
                 value="covidVaccineNo"
               />
-              <label for="covidVaccineNo">No</label>
+              <label htmlFor="covidVaccineNo">No</label>
             </div>
           </div>
 
           <div className={styles.vaccineDate}>
             <p>When did you get your last covid vaccine?</p>
-            <Input type="date" name="vaccineDate" placeholder="Date" />
+            <DatePicker
+              className={styles.datePickerInput}
+              selected={vacineDate}
+              onChange={(date) => {
+                setVacineDate(date)
+              }}
+              closeOnScroll={true}
+              placeholderText="Date"
+            />
+            <img
+              src={require('../../assets/images/calendar.png')}
+              alt="calendar"
+              className={styles.calendarLogo_2}
+            />
           </div>
         </div>
       </form>
