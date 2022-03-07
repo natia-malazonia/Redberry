@@ -4,7 +4,6 @@ import Input from '../../UI/Input'
 import BaseLayout from '../../UI/BaseLayout'
 
 function PersonalInformation() {
-
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
@@ -51,7 +50,6 @@ function PersonalInformation() {
 
   const formSubmissionHandler = (event) => {
     event.preventDefault()
-
   }
 
   function formIsValid() {
@@ -65,6 +63,7 @@ function PersonalInformation() {
 
   return (
     <BaseLayout
+      pageNumber={1}
       previousPageUrl={'/'}
       nextPageUrl={'/skills-page'}
       allowNextPage={formIsValid()}

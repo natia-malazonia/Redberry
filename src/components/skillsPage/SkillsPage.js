@@ -23,6 +23,7 @@ function SkillsPage() {
 
   return (
     <BaseLayout
+      pageNumber={2}
       previousPageUrl={'/PersonalInformation'}
       nextPageUrl={'/covid-page'}
       allowNextPage={formIsValid()}

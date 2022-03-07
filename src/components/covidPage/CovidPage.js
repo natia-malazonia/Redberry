@@ -18,6 +18,7 @@ function CovidPage() {
 
   return (
     <BaseLayout
+      pageNumber={3}
       previousPageUrl={'/skills-page'}
       nextPageUrl={'/redberry-insight'}
       allowNextPage={formIsValid()}

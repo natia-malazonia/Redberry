@@ -9,6 +9,7 @@ function RedberryInsight() {
 
   return (
     <BaseLayout
+      pageNumber={4}
       previousPageUrl={'/covid-page'}
       nextPageUrl={'/'}
       allowNextPage={formIsValid()}

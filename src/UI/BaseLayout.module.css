@@ -34,6 +34,7 @@
 }
 
 .btnContainer {
+  align-self: center;
   margin-top: 90px;
   height: 18px;
 }
@@ -52,7 +53,7 @@
   margin-top: 15px;
 }
 
-.rightSideHeader  > h1 {
+.rightSideHeader > h1 {
   /* text-align: center; */
   width: 788px;
   font-family: 'Rowdies', cursive;
@@ -75,7 +76,7 @@
   color: #ffffff;
 }
 
-.btnPrev,
+/* .btnPrev,
 .btnNext {
   position: absolute;
   width: 18px;
@@ -88,4 +89,21 @@
 
 .btnPrev {
   left: 359px;
+} */
+
+.paginationBtnPrev {
+  margin-right: 18px;
+  cursor: pointer;
+}
+
+.paginationBtnNext {
+  margin-left: 3px;
+  cursor: pointer;
+}
+
+.paginationBtn {
+  margin-right: 15px;
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
 }
