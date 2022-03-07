@@ -4,22 +4,6 @@ import styles from './BaseLayout.module.css'
 function BaseLayout(props) {
   const navigate = useNavigate()
 
-  for (let i = 0; i < 5; i++) {
-    if (props.pageNumber > i) {
-      ;<img
-        src={require('../../src/assets/images/Ellipse 1.png')}
-        alt="calendar"
-        className={styles.paginationBtn}
-      ></img>
-    } else {
-      ;<img
-        src={require('../../src/assets/images/Ellipse 2.png')}
-        alt="calendar"
-        className={styles.paginationBtn}
-      ></img>
-    }
-  }
-
   return (
     <div className={styles.baseLayoutContainer}>
       <div className={styles.leftSide}>
@@ -28,19 +12,6 @@ function BaseLayout(props) {
         </div>
         <div className={styles.formContainer}>{props.children}</div>
         <div className={styles.btnContainer}>
-          {/* <button
-            onClick={() => {
-              navigate(props.previousPageUrl)
-            }}
-            className={styles.btnPrev}
-          ></button>
-          <button
-            onClick={() => {
-              if (props.allowNextPage) navigate(props.nextPageUrl)
-            }}
-            className={styles.btnNext}
-          ></button> */}
-
           <img
             onClick={() => {
               navigate(props.previousPageUrl)
