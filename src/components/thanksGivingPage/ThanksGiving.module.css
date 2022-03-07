@@ -1,0 +1,16 @@
+.thanksGivingContainer {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thanksGivingContainer > p {
+  font-family: 'Rowdies', cursive;
+  font-weight: 400;
+  font-size: 96px;
+  color: #fe3b1f;
+}

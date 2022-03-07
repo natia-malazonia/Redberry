@@ -1,0 +1,34 @@
+.submitContainer {
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.submitButton {
+  width: 395px;
+  height: 79px;
+  border: none;
+  border-radius: 50px;
+  background-color: #fe3b1f;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 36px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.goBackBtn {
+  margin-top: 35px;
+  background: transparent;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: #ffffff;
+  text-decoration: underline;
+  cursor: pointer;
+}
