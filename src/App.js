@@ -4,6 +4,7 @@ import Questionnaire from './components/questionnaire/Questionnaire';
 import PersonalInformation from './components/personalInfoPage/PersonalInformation';
 import SkillsPage from './components/skillsPage/SkillsPage';
 import CovidPage from './components/covidPage/CovidPage';
+import RedberryInsight from './components/redberryInsight/RedberryInsight';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/PersonalInformation" element={<PersonalInformation/>} />
         <Route path="/skills-page" element={<SkillsPage />} />
         <Route path="/covid-page" element={<CovidPage />} />
+        <Route path="/redberry-insight" element={<RedberryInsight />} ></Route>
       </Routes>
     </div>
   );

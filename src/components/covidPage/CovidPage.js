@@ -1,22 +1,25 @@
 import BaseLayout from '../../UI/BaseLayout'
 import styles from './CovidPage.module.css'
-import useInput from '../../hooks/useInput'
 
-import Input from '../../UI/Input'
 import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 function CovidPage() {
   function formIsValid() {}
   const [covidContactDate, setCovidContactDate] = useState()
   const [vacineDate, setVacineDate] = useState()
 
+  const [hadContact, setHadContact] = useState()
+  const [hadVaccine, setHadVaccine] = useState()
+
+  const covidContactRef = useRef()
+
   return (
     <BaseLayout
       previousPageUrl={'/skills-page'}
-      nextPageUrl={'/'}
+      nextPageUrl={'/redberry-insight'}
       allowNextPage={formIsValid()}
       leftSideHeader={'Covid Stuff'}
       rightSideHeader={'Redberry Covid Policies'}
@@ -51,84 +54,106 @@ function CovidPage() {
             <p>Did you contact covid19? :( </p>
             <div>
               <input
+                className={styles.radioInputBtn}
                 type="radio"
                 id="covContact"
                 name="covContact"
-                value="covContact"
+                value={hadContact}
+                onClick={(event) => {
+                  setHadContact(true)
+                }}
               />
               <label htmlFor="covContact">Yes</label>
             </div>
 
             <div>
               <input
+                className={styles.radioInputBtn}
                 type="radio"
                 id="covContactNo"
-                name="covContactNo"
-                value="covContactNo"
+                name="covContact"
+                value={hadContact}
+                onClick={(event) => {
+                  setHadContact(false)
+                }}
               />
               <label htmlFor="covContactNo">No</label>
             </div>
           </div>
-
-          <div className={styles.contactDate}>
-            <p>When?</p>
-            <DatePicker
-              className={styles.datePickerInput}
-              selected={covidContactDate}
-              onChange={(date) => {
-                setCovidContactDate(date)
-              }}
-              closeOnScroll={true}
-              placeholderText="Date"
-            />
-            <img
-              src={require('../../assets/images/calendar.png')}
-              alt="calendar"
-              className={styles.calendarLogo_1}
-              
-            />
-          </div>
+          {hadContact && (
+            <div className={styles.contactDate}>
+              <p>When?</p>
+              <DatePicker
+                ref={covidContactRef}
+                className={styles.datePickerInput}
+                selected={covidContactDate}
+                onChange={(date) => {
+                  setCovidContactDate(date)
+                }}
+                closeOnScroll={true}
+                placeholderText="Date"
+              />
+              <img
+                onClick={() => {
+                  covidContactRef.current.setFocus()
+                }}
+                src={require('../../assets/images/calendar.png')}
+                alt="calendar"
+                className={styles.calendarLogo_1}
+              />
+            </div>
+          )}
 
           <div className={styles.vaccine}>
             <p>Have you been vaccinated? </p>
             <div>
               <input
+                className={styles.radioInputBtn}
                 type="radio"
                 id="covidVaccine"
                 name="covidVaccine"
-                value="covidVaccine"
+                value={hadVaccine}
+                onClick={(event) => {
+                  setHadVaccine(true)
+                }}
               />
               <label htmlFor="covidVaccine">Yes</label>
             </div>
 
             <div>
               <input
+                className={styles.radioInputBtn}
                 type="radio"
                 id="covidVaccineNo"
-                name="covidVaccineNo"
-                value="covidVaccineNo"
+                name="covidVaccine"
+                value={hadVaccine}
+                onClick={() => {
+                  setHadVaccine(false)
+                }}
               />
               <label htmlFor="covidVaccineNo">No</label>
             </div>
           </div>
 
-          <div className={styles.vaccineDate}>
-            <p>When did you get your last covid vaccine?</p>
-            <DatePicker
-              className={styles.datePickerInput}
-              selected={vacineDate}
-              onChange={(date) => {
-                setVacineDate(date)
-              }}
-              closeOnScroll={true}
-              placeholderText="Date"
-            />
-            <img
-              src={require('../../assets/images/calendar.png')}
-              alt="calendar"
-              className={styles.calendarLogo_2}
-            />
-          </div>
+          {hadVaccine && (
+            <div className={styles.vaccineDate}>
+              <p>When did you get your last covid vaccine?</p>
+              <DatePicker
+                className={styles.datePickerInput}
+                selected={vacineDate}
+                onChange={(date) => {
+                  setVacineDate(date)
+                }}
+                closeOnScroll={true}
+                placeholderText="Date"
+              />
+              <img
+                src={require('../../assets/images/calendar.png')}
+                alt="calendar"
+                className={styles.calendarLogo_2}
+              />
+            </div>
+          )}
         </div>
       </form>
     </BaseLayout>

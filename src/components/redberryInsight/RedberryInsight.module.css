@@ -1,0 +1,54 @@
+.devTalk .talkAbout,
+.smthSpecial {
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.devTalk > div {
+  margin-top: 17px;
+}
+
+.devTalk > p,
+.talkAbout > p,
+.smthSpecial > p {
+  font-size: 18px;
+}
+
+.devTalk > div > input {
+  font-size: 14px;
+}
+
+.talkAbout {
+  margin-top: 45px;
+}
+
+.talkAbout > div > textarea,
+.smthSpecial > div > textarea {
+  width: 535px;
+  height: 122px;
+  padding-left: 23px;
+  padding-top: 24px;
+  margin-top: 11px;
+}
+
+.smthSpecial > div > textarea {
+  height: 89px;
+}
+
+.talkAbout > div > textarea::placeholder,
+.smthSpecial > div > textarea::placeholder {
+  color: #3a3a3a;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.smthSpecial {
+  margin-top: 33px;
+}
+
+.inpurRadioBtn {
+    cursor: pointer;
+}

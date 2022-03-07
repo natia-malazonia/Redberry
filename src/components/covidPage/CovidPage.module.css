@@ -93,6 +93,10 @@
   cursor: pointer;
 }
 
+.radioInputBtn {
+  cursor: pointer;
+}
+
 
 
 /* input[type='date']::-webkit-inner-spin-button,
