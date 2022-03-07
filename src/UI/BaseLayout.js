@@ -3,7 +3,7 @@ import styles from './BaseLayout.module.css'
 
 function BaseLayout(props) {
   const navigate = useNavigate()
-  
+
   return (
     <div className={styles.baseLayoutContainer}>
       <div className={styles.leftSide}>
@@ -28,11 +28,13 @@ function BaseLayout(props) {
       </div>
 
       <div className={styles.rightSide}>
-        <div className={styles.rightSideHeader}>
-          <h1>{props.rightSideHeader}</h1>
-        </div>
+        <div className={styles.rightSideContentContainer}>
+          <div className={styles.rightSideHeader}>
+            <h1>{props.rightSideHeader}</h1>
+          </div>
 
-        <p>{props.text}</p>
+          <p>{props.text}</p>
+        </div>
       </div>
     </div>
   )

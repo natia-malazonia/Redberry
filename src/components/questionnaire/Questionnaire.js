@@ -12,7 +12,7 @@ function Questionnaire() {
     <div className={styles.questionnaireContainer}>
       <h1 className={styles.header}>Welcome Rocketeer !</h1>
       <button className={styles.btn} onClick={questionChangeHandler}>Start Questionnaire</button>
-      <a href=''>Submitted Applications</a>
+      <button className={styles.submitedUserBtn}>Submitted Applications</button>
       <div className={styles.rocketman}></div>
     </div>
   )

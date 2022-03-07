@@ -19,6 +19,10 @@
   font-size: 14px;
 }
 
+.devTalk > div > label {
+  margin-left: 10px;
+}
+
 .talkAbout {
   margin-top: 45px;
 }

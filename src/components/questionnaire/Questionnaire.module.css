@@ -4,6 +4,10 @@
 }
 
 .questionnaireContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: black;
@@ -11,67 +15,48 @@
 }
 
 .header {
-  position: absolute;
+  margin-top: 65px;
   width: 1090px;
   height: 212px;
-  left: 434px;
-  top: 94px;
   font-family: Rowdies;
-  font-style: normal;
-  font-weight: normal;
+  font-weight: 400;
   font-size: 96px;
-  line-height: 119px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   color: #fe3b1f;
 }
 
 .btn {
-  position: absolute;
+  margin-top: 18px;
   width: 395px;
   height: 79px;
-  left: 754px;
-  top: 395px;
   border: none;
   background: #fe3b1f;
   border-radius: 50px;
   color: #ffffff;
   font-family: 'Montserrat', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 24px;
   letter-spacing: 1px;
-  line-height: 29px;
-  align-items: center;
-  text-align: center;
   cursor: pointer;
 }
 
-a {
-  position: absolute;
+.submitedUserBtn {
+  margin-top: 18px;
   width: 338px;
   height: 66px;
-  left: 822px;
-  top: 502px;
   font-family: 'Montserrat', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 24px;
-  line-height: 29px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-decoration-line: underline;
+  border: none;
+  background: transparent;
+  text-decoration: underline;
   color: #ffffff;
   cursor: pointer;
 }
 
 .rocketman {
+  margin-right: 168px;
+  margin-top: -25px;
   background: url('../../assets/images/rocketman.png');
-  position: absolute;
   width: 409.92px;
   height: 403.45px;
-  left: 661px;
-  top: 510.88px;
 }

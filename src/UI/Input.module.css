@@ -13,11 +13,11 @@
 }
 
 .inputTxt {
-    font-family: 'Montserrat', sans-serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 20px !important; 
-    color: #1f1e27 !important;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 20px !important;
+  color: #1f1e27 !important;
 }
 
 .input::placeholder {
@@ -31,14 +31,15 @@
   top: 17px;
 }
 
-.input:invalid, .invalid {
+.input:invalid,
+.invalid {
   border: 1px solid #fe3b1f;
 }
 
 .errorText {
   width: 209px;
   height: 16px;
-  margin-left: 290px;
+  margin-left: 6px;
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 400;

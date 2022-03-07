@@ -8,7 +8,7 @@
 .rightSide {
   width: 50%;
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
 }
 
 .header_1 {
@@ -40,17 +40,20 @@
 
 .rightSide {
   background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  justify-content: center;
+}
+
+.rightSideContentContainer {
+  padding-left: 130px;
 }
 
 .rightSideHeader {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  margin-top: 76px;
+  margin-top: 15px;
 }
 
-.rightSideHeader > h1 {
+.rightSideHeader  > h1 {
+  /* text-align: center; */
   width: 788px;
   font-family: 'Rowdies', cursive;
   font-style: normal;
@@ -59,19 +62,15 @@
   color: #fe3b1f;
 }
 
-.rightSide > p {
-  position: absolute;
+.rightSide > .rightSideContentContainer > p {
+  /* padding-left: 138px; */
+  padding-top: 110px;
   width: 705px;
   height: 606px;
-  left: 1119px;
-  top: 195px;
   font-family: 'Montserrat', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 200%;
-  display: flex;
-  align-items: center;
   letter-spacing: 0.05em;
   color: #ffffff;
 }

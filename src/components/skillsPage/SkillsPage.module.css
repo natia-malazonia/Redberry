@@ -17,18 +17,14 @@
 }
 
 .prLanguage {
-  position: absolute;
+  margin-left: 252px;
   width: 201px;
   height: 32px;
-  left: 489px;
-  top: 470px;
   background: #fe3b1f;
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-style: normal;
   font-weight: 400;
   font-size: 12px;
-  line-height: 14.63px;
   color: #ffffff;
   cursor: pointer;
 }
