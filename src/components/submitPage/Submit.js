@@ -22,6 +22,7 @@ function Submit() {
     })
     if(response.status === 201){
         navigate('/thanks-giving-page')
+        return;
     } 
     alert('Something went wrong. Try again later')
   }
