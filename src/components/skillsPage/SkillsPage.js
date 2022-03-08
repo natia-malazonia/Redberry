@@ -2,12 +2,14 @@ import styles from './SkillsPage.module.css'
 import BaseLayout from '../../UI/BaseLayout'
 import Input from '../../UI/Input'
 import useInput from '../../hooks/useInput'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import QuestionsContext from '../../store/questions-context'
 
 function SkillsPage() {
   const [skillsList, setSkillsList] = useState([])
   const [selectedSkillValue, setSelectedSkillValue] = useState('')
   const [selectedSkillsList, setSelectedSkillsList] = useState([])
+  const context = useContext(QuestionsContext)
 
   const {
     value: experienceInYears,
@@ -28,6 +30,19 @@ function SkillsPage() {
     }
     getSkills()
   }, [])
+
+  useEffect(() => {
+    if (context.questionData.skills.length > 0 && skillsList.length > 0)
+      setSelectedSkillsList(
+        context.questionData.skills.map((item) => {
+          return {
+            id: item.id,
+            title: skillsList.filter((skill) => skill.id === item.id)[0].title,
+            years: item.experience,
+          }
+        }),
+      )
+  }, [skillsList, context.questionData.skills])
 
   const addSkillHandler = () => {
     if (isNaN(selectedSkillValue) || !experienceInYearsIsValid) {
@@ -59,13 +74,28 @@ function SkillsPage() {
     return selectedSkillsList.length > 0
   }
 
+  const saveHandler = () => {
+    if (formIsValid()) {
+      context.setSkillsHandler(
+        selectedSkillsList.map((item) => {
+          return {
+            id: +item.id,
+            experience: +item.years,
+          }
+        }),
+      )
+    }
+  }
+
   return (
     <BaseLayout
       pageNumber={2}
       previousPageUrl={'/PersonalInformation'}
       nextPageUrl={'/covid-page'}
       allowNextPage={formIsValid()}
-      errorMessage='*You must choose at least 1 skill'
+      beforePrevPageHandler={saveHandler}
+      beforeNextPageHandler={saveHandler}
+      errorMessage="*You must choose at least 1 skill"
       leftSideHeader={'Tell us about your skills'}
       rightSideHeader={'A bit about our battles'}
       text={`As we said, Redberry has been on the field for quite some time now, 

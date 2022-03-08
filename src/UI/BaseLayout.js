@@ -20,6 +20,7 @@ function BaseLayout(props) {
           </p>
           <img
             onClick={() => {
+              if (props.beforePrevPageHandler) props.beforePrevPageHandler()
               navigate(props.previousPageUrl)
             }}
             src={require('../../src/assets/images/Previous.png')}
@@ -54,6 +55,7 @@ function BaseLayout(props) {
                 setShowError(true)
                 return
               }
+              props.beforeNextPageHandler()
               navigate(props.nextPageUrl)
             }}
             src={require('../../src/assets/images/Next.png')}

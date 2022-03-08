@@ -2,8 +2,12 @@ import useInput from '../../hooks/useInput'
 import { validate } from 'react-email-validator'
 import Input from '../../UI/Input'
 import BaseLayout from '../../UI/BaseLayout'
+import { useContext } from 'react'
+import QuestionsContext from '../../store/questions-context'
 
 function PersonalInformation() {
+  const context = useContext(QuestionsContext)
+
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
@@ -11,7 +15,7 @@ function PersonalInformation() {
     valueChangeHandler: nameChangedHandler,
     inputBlurHandler: nameBlurHandler,
     isTouched: nameInputIsTouched,
-  } = useInput((value) => value.trim().length > 2)
+  } = useInput((value) => value.trim().length > 2, context.questionData.first_name)
 
   const {
     value: enteredLastName,
@@ -20,7 +24,7 @@ function PersonalInformation() {
     valueChangeHandler: lastNameChangedHandler,
     inputBlurHandler: lastNameBlurHandler,
     isTouched: lastNameInputIsTouched,
-  } = useInput((value) => value.trim().length > 2)
+  } = useInput((value) => value.trim().length > 2, context.questionData.last_name)
 
   const {
     value: enteredEmail,
@@ -29,7 +33,7 @@ function PersonalInformation() {
     valueChangeHandler: emailChangedHandler,
     inputBlurHandler: emailBlurHandler,
     isTouched: emailInputIsTouched,
-  } = useInput((value) => validate(value))
+  } = useInput((value) => validate(value), context.questionData.email)
 
   const {
     value: enteredMobilenum,
@@ -46,7 +50,7 @@ function PersonalInformation() {
       return true
     }
     return false
-  })
+  }, context.questionData.phone)
 
   const formSubmissionHandler = (event) => {
     event.preventDefault()
@@ -61,11 +65,19 @@ function PersonalInformation() {
     )
   }
 
+  const saveHandler = ()=> {
+    if(formIsValid()) {
+      context.setPersonalInformationHandler(enteredName, enteredLastName, enteredEmail, enteredMobilenum)
+    }
+  }
+
   return (
     <BaseLayout
       pageNumber={1}
       previousPageUrl={'/'}
       nextPageUrl={'/skills-page'}
+      beforePrevPageHandler={saveHandler}
+      beforeNextPageHandler={saveHandler}
       allowNextPage={formIsValid()}
       leftSideHeader={'Hey, Rocketeer, what are your coordinates?'}
       rightSideHeader={'Redberry Origins'}

@@ -4,7 +4,7 @@ import BaseLayout from '../../UI/BaseLayout'
 import styles from './RedberryInsight.module.css'
 
 function RedberryInsight() {
-  const [devTalkAllow, setDevTalkAllow] = useState(null)
+  const [devTalkAllow, setDevTalkAllow] = useState(undefined)
 
   const {
     value: devTalkAbout,
@@ -21,7 +21,7 @@ function RedberryInsight() {
   } = useInput((value) => value.trim() !== '')
 
   function formIsValid() {
-    return devTalkAllow !== null && devTalkAboutIsValid && saySmthSpecialIsValid
+    return devTalkAllow !== undefined && devTalkAboutIsValid && saySmthSpecialIsValid
   }
 
   return (
