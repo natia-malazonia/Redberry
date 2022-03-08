@@ -5,20 +5,31 @@ import DatePicker from 'react-datepicker'
 
 import 'react-datepicker/dist/react-datepicker.css'
 import { useRef, useState } from 'react'
+import { workPreferences } from './WorkPreferenceEnum'
 
 function CovidPage() {
-  function formIsValid() {}
   const [covidContactDate, setCovidContactDate] = useState()
-  const [vacineDate, setVacineDate] = useState()
+  const [vaccineDate, setVaccineDate] = useState()
 
   const [hadContact, setHadContact] = useState()
   const [hadVaccine, setHadVaccine] = useState()
 
+  const [selectedWorkPreference, setSelectedWorkPreference] = useState()
+
   const covidContactRef = useRef()
+
+  function formIsValid() {
+    return (
+      (hadContact ? covidContactDate : true) &&
+      (hadVaccine ? vaccineDate : true) &&
+      selectedWorkPreference
+    )
+  }  
 
   return (
     <BaseLayout
       pageNumber={3}
+      errorMessage="*All questions must be answered"
       previousPageUrl={'/skills-page'}
       nextPageUrl={'/redberry-insight'}
       allowNextPage={formIsValid()}
@@ -36,17 +47,41 @@ function CovidPage() {
           <div className={styles.workEnvironment}>
             <p>How would you prefer to work?</p>
             <div>
-              <input type="radio" id="office" name="office" value="office" />
+              <input
+                type="radio"
+                id="office"
+                name="workPreference"
+                value={selectedWorkPreference}
+                onClick={() => {
+                  setSelectedWorkPreference(workPreferences.from_office)
+                }}
+              />
               <label htmlFor="office">From Sairme Office</label>
             </div>
 
             <div>
-              <input type="radio" id="home" name="home" value="home" />
+              <input
+                type="radio"
+                id="home"
+                name="workPreference"
+                value={selectedWorkPreference}
+                onClick={() => {
+                  setSelectedWorkPreference(workPreferences.from_home)
+                }}
+              />
               <label htmlFor="home">From Home</label>
             </div>
 
             <div>
-              <input type="radio" id="hybrid" name="hybrid" value="hybrid" />
+              <input
+                type="radio"
+                id="hybrid"
+                name="workPreference"
+                value={selectedWorkPreference}
+                onClick={() => {
+                  setSelectedWorkPreference(workPreferences.hybrid)
+                }}
+              />
               <label htmlFor="home">Hybrid</label>
             </div>
           </div>
@@ -102,6 +137,9 @@ function CovidPage() {
                 alt="calendar"
                 className={styles.calendarLogo_1}
               />
+              {!covidContactDate && (
+                <p className={styles.errorText}>*You must enter contact date</p>
+              )}
             </div>
           )}
 
@@ -135,15 +173,14 @@ function CovidPage() {
               <label htmlFor="covidVaccineNo">No</label>
             </div>
           </div>
-
           {hadVaccine && (
             <div className={styles.vaccineDate}>
               <p>When did you get your last covid vaccine?</p>
               <DatePicker
                 className={styles.datePickerInput}
-                selected={vacineDate}
+                selected={vaccineDate}
                 onChange={(date) => {
-                  setVacineDate(date)
+                  setVaccineDate(date)
                 }}
                 closeOnScroll={true}
                 placeholderText="Date"
@@ -153,6 +190,9 @@ function CovidPage() {
                 alt="calendar"
                 className={styles.calendarLogo_2}
               />
+              {!vaccineDate && (
+                <p className={styles.errorText}>*You must enter vaccine date</p>
+              )}
             </div>
           )}
         </div>

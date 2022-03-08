@@ -52,7 +52,6 @@
   position: relative;
 }
 
-
 .contactDate > input,
 .vaccineDate > input {
   width: 455px;
@@ -84,7 +83,8 @@
   cursor: pointer;
 }
 
-.calendarLogo_1, .calendarLogo_2 {
+.calendarLogo_1,
+.calendarLogo_2 {
   width: 16px;
   height: 18px;
   position: absolute;
@@ -97,7 +97,17 @@
   cursor: pointer;
 }
 
-
+.errorText {
+  width: 209px;
+  height: 16px;
+  margin-left: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400 !important;
+  font-size: 11px !important;
+  line-height: 13px !important;
+  color: #fe3b1f !important;
+}
 
 /* input[type='date']::-webkit-inner-spin-button,
  input[type='date']::-webkit-calendar-picker-indicator
