@@ -13,8 +13,7 @@ function Submit() {
 
   const submitHandler = async () => {
     const response = await fetch('https://bootcamp-2022.devtest.ge/api/application', {
-      method: 'POST',
-      mode:'no-cors',
+      method: 'POST',    
       headers: {
         'Content-Type': 'application/json',
         'accept':'application/json'
