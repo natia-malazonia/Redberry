@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import styles from './BaseLayout.module.css'
 
 function BaseLayout(props) {
+  const [showError, setShowError] = useState(false)
   const navigate = useNavigate()
 
   return (
@@ -11,7 +13,11 @@ function BaseLayout(props) {
           <h1>{props.leftSideHeader}</h1>
         </div>
         <div className={styles.formContainer}>{props.children}</div>
+
         <div className={styles.btnContainer}>
+          <p className={styles.errorMessageText}>
+            {showError && props.errorMessage}
+          </p>
           <img
             onClick={() => {
               navigate(props.previousPageUrl)
@@ -44,7 +50,11 @@ function BaseLayout(props) {
 
           <img
             onClick={() => {
-              if (props.allowNextPage) navigate(props.nextPageUrl)
+              if (!props.allowNextPage) {
+                setShowError(true)
+                return
+              }
+              navigate(props.nextPageUrl)
             }}
             src={require('../../src/assets/images/Next.png')}
             alt="calendar"

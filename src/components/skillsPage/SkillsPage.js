@@ -2,23 +2,61 @@ import styles from './SkillsPage.module.css'
 import BaseLayout from '../../UI/BaseLayout'
 import Input from '../../UI/Input'
 import useInput from '../../hooks/useInput'
+import { useEffect, useState } from 'react'
 
 function SkillsPage() {
+  const [skillsList, setSkillsList] = useState([])
+  const [selectedSkillValue, setSelectedSkillValue] = useState('')
+  const [selectedSkillsList, setSelectedSkillsList] = useState([])
+
   const {
-    value: enteredSkill,
-    isValid: enteredSkillIsValid,
-    hasError: skillInputHasError,
-    valueChangeHandler: skillChangedHandler,
-    inputBlurHandler: skillBlurHandler,
-    isTouched: skillInputIsTouched,
-  } = useInput((value) => value.trim().length > 0)
+    value: experienceInYears,
+    isValid: experienceInYearsIsValid,
+    hasError: experienceInYearsHasError,
+    valueChangeHandler: experienceInYearsChangedHandler,
+    inputBlurHandler: experienceInYearsBlurHandler,
+    isTouched: experienceInYearsIsTouched,
+  } = useInput((value) => value.trim().length > 0 && !isNaN(value.trim()))
+
+  useEffect(() => {
+    async function getSkills() {
+      const response = await fetch(
+        'https://bootcamp-2022.devtest.ge/api/skills',
+      )
+      const data = await response.json()
+      setSkillsList(data)
+    }
+    getSkills()
+  }, [])
+
+  const addSkillHandler = () => {
+    if (isNaN(selectedSkillValue) || !experienceInYearsIsValid) {
+      return
+    }
+    if (selectedSkillsList.some((item) => item.id === selectedSkillValue)) {
+      return
+    }
+    let newSkill = {
+      id: selectedSkillValue,
+      title: skillsList.filter((item) => item.id === +selectedSkillValue)[0]
+        .title,
+      years: experienceInYears.trim(),
+    }
+    setSelectedSkillsList((prevValue) => [...prevValue, newSkill])
+  }
+
+  const removeSkillHandler = (id) => {
+    setSelectedSkillsList((prevValue) =>
+      prevValue.filter((item) => item.id !== id),
+    )
+  }
 
   const formSubmissionHandler = (event) => {
     event.preventDefault()
   }
 
   function formIsValid() {
-    return enteredSkillIsValid
+    return selectedSkillsList.length > 0
   }
 
   return (
@@ -27,6 +65,7 @@ function SkillsPage() {
       previousPageUrl={'/PersonalInformation'}
       nextPageUrl={'/covid-page'}
       allowNextPage={formIsValid()}
+      errorMessage='*You must choose at least 1 skill'
       leftSideHeader={'Tell us about your skills'}
       rightSideHeader={'A bit about our battles'}
       text={`As we said, Redberry has been on the field for quite some time now, 
@@ -36,33 +75,64 @@ function SkillsPage() {
       technologies like Docker and Kubernetes, and now we have set foot in the web3 industry.`}
     >
       <form onSubmit={formSubmissionHandler} className={styles.form}>
-        <select name="skills" id="skills" className={styles.select}>
-          <option value="0">Skills</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
+        <select
+          value={selectedSkillValue}
+          name="skills"
+          id="skills"
+          className={styles.select}
+          onChange={(event) => {
+            setSelectedSkillValue(event.target.value)
+          }}
+        >
+          <option value="" disabled>
+            Skills
+          </option>
+          {skillsList.map((item) => {
+            return (
+              <option key={item.id} value={item.id}>
+                {item.title}
+              </option>
+            )
+          })}
         </select>
         <Input
           name="skill"
           type="text"
           placeholder="Experience Duration In Years"
-          value={enteredSkill}
-          onChange={skillChangedHandler}
-          onBlur={skillBlurHandler}
-          hasError={skillInputHasError}
-          isTouched={skillInputIsTouched}
+          value={experienceInYears}
+          onChange={experienceInYearsChangedHandler}
+          onBlur={experienceInYearsBlurHandler}
+          hasError={experienceInYearsHasError}
+          isTouched={experienceInYearsIsTouched}
           errorText={'* Experience Duration is required'}
         />
-        <button className={styles.prLanguage}>Add Programming Language</button>
+        <button onClick={addSkillHandler} className={styles.prLanguage}>
+          Add Programming Language
+        </button>
         <div className={styles.skillsContainer}>
-          <div className={styles.skill}>
+          {selectedSkillsList.map((item) => {
+            return (
+              <div className={styles.skill} key={item.id}>
+                {item.title} Years of Experience: {item.years}
+                <button
+                  onClick={() => {
+                    removeSkillHandler(item.id)
+                  }}
+                  className={styles.skillBtn}
+                >
+                  -
+                </button>
+              </div>
+            )
+          })}
+          {/* <div className={styles.skill}>
             PHP Years of Experience: 3{' '}
             <button className={styles.skillBtn}>-</button>
           </div>
           <div className={styles.skill}>
             React Year of Experience: 2{' '}
             <button className={styles.skillBtn}>-</button>
-          </div>
+          </div> */}
         </div>
       </form>
     </BaseLayout>
