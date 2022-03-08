@@ -1,27 +1,50 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import useInput from '../../hooks/useInput'
+import QuestionsContext from '../../store/questions-context'
 import BaseLayout from '../../UI/BaseLayout'
 import styles from './RedberryInsight.module.css'
 
 function RedberryInsight() {
-  const [devTalkAllow, setDevTalkAllow] = useState(undefined)
+  const context = useContext(QuestionsContext)
+
+  const [devTalkAllow, setDevTalkAllow] = useState(
+    context.questionData.will_organize_devtalk,
+  )
 
   const {
     value: devTalkAbout,
     isValid: devTalkAboutIsValid,
     valueChangeHandler: devTalkAboutChangeHandler,
     inputBlurHandler: devTalkAboutBlurHandler,
-  } = useInput((value) => value.trim() !== '')
+  } = useInput(
+    (value) => value.trim() !== '',
+    context.questionData.devtalk_topic,
+  )
 
   const {
     value: saySmthSpecial,
     isValid: saySmthSpecialIsValid,
     valueChangeHandler: saySmthSpecialChangeHandler,
     inputBlurHandler: saySmthSpecialBlurHandler,
-  } = useInput((value) => value.trim() !== '')
+  } = useInput(
+    (value) => value.trim() !== '',
+    context.questionData.something_special,
+  )
 
   function formIsValid() {
-    return devTalkAllow !== undefined && devTalkAboutIsValid && saySmthSpecialIsValid
+    return (
+      devTalkAllow !== undefined && devTalkAboutIsValid && saySmthSpecialIsValid
+    )
+  }
+
+  const devTalkAllowChangeHandler = (event) => {
+    setDevTalkAllow(JSON.parse(event.target.value))
+  }
+
+  const saveHandler = () => {
+    if (formIsValid()) {
+      context.setRedberryInsightHandler(devTalkAllow, devTalkAbout, saySmthSpecial)
+    }
   }
 
   return (
@@ -30,6 +53,8 @@ function RedberryInsight() {
       errorMessage="*All questions must be answered"
       previousPageUrl={'/covid-page'}
       nextPageUrl={'/submit-page'}
+      beforePrevPageHandler={saveHandler}
+      beforeNextPageHandler={saveHandler}
       allowNextPage={formIsValid()}
       leftSideHeader={'What about you?'}
       rightSideHeader={'Redberrian Insights'}
@@ -44,9 +69,7 @@ function RedberryInsight() {
        talks in the office but you can join our Zoom broadcast as 
        well. Feel free to join either as an attendee or a speaker!`}
     >
-     
       <form>
-    
         <div className={styles.devTalk}>
           <p>Would you attend Devtalks and maybe also organize your own?</p>
           <div>
@@ -55,10 +78,9 @@ function RedberryInsight() {
               type="radio"
               id="devTalkYes"
               name="devTalk"
-              value={devTalkAllow}
-              onClick={(event) => {
-                setDevTalkAllow(true)
-              }}
+              value={'true'}
+              checked={devTalkAllow.toString() === 'true'}
+              onChange={devTalkAllowChangeHandler}
             />
             <label htmlFor="devTalkYes">Yes</label>
           </div>
@@ -69,10 +91,9 @@ function RedberryInsight() {
               type="radio"
               id="devTalkNo"
               name="devTalk"
-              value={devTalkAllow}
-              onClick={(event) => {
-                setDevTalkAllow(false)
-              }}
+              value={'false'}
+              checked={devTalkAllow.toString() === 'false'}
+              onChange={devTalkAllowChangeHandler}
             />
             <label htmlFor="devTalkNo">No</label>
           </div>

@@ -1,26 +1,41 @@
 import React, { useState } from 'react'
 
 const initalData = {
-    token: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-    phone: '',
-    skills: [],
-    work_preference: '',
-    had_covid: false,
-    had_covid_at: '',
-    vaccinated: false,
-    vaccinated_at: '',
-    will_organize_devtalk: false,
-    devtalk_topic: '',
-    something_special: '',
-  }
+  token: '',
+  first_name: '',
+  last_name: '',
+  email: '',
+  phone: '',
+  skills: [],
+  work_preference: '',
+  had_covid: '',
+  had_covid_at: '',
+  vaccinated: '',
+  vaccinated_at: '',
+  will_organize_devtalk: '',
+  devtalk_topic: '',
+  something_special: '',
+}
 
 const QuestionsContext = React.createContext({
   questionData: initalData,
   setPersonalInformationHandler: (firtsName, lastName, email, mobile) => {},
   setSkillsHandler: (skillsList) => {},
+  setCovidHandler: (
+    workPreference,
+    hadCovid,
+    hadCovidAt,
+    hadVaccine,
+    hadVaccineAt,
+  ) => {},
+  setRedberryInsightHandler: (
+    willOrganizeDevtalk,
+    devtalkTopic,
+    smtSpecial,
+  ) => {},
+  resetDataHandler: () => {},
+  initTokenHandler: () => {},
+  getFormattedData: () => {}
 })
 
 export const QuestionsContextProvider = (props) => {
@@ -47,6 +62,80 @@ export const QuestionsContextProvider = (props) => {
     })
   }
 
+  const setCovidHandler = (
+    workPreference,
+    hadCovid,
+    hadCovidAt,
+    hadVaccine,
+    hadVaccineAt,
+  ) => {
+    setQuestionData((prev) => {
+      return {
+        ...prev,
+        work_preference: workPreference,
+        had_covid: hadCovid,
+        had_covid_at: hadCovid
+          ? `${hadCovidAt.getFullYear()}-${
+              hadCovidAt.getMonth() + 1
+            }-${hadCovidAt.getDate()}`
+          : '',
+        vaccinated: hadVaccine,
+        vaccinated_at: hadVaccine
+          ? `${hadVaccineAt.getFullYear()}-${
+              hadVaccineAt.getMonth() + 1
+            }-${hadVaccineAt.getDate()}`
+          : '',
+      }
+    })
+  }
+
+  const setRedberryInsightHandler = (
+    willOrganizeDevtalk,
+    devtalkTopic,
+    smtSpecial,
+  ) => {
+    setQuestionData((prev) => {
+      return {
+        ...prev,
+        will_organize_devtalk: willOrganizeDevtalk,
+        devtalk_topic: devtalkTopic,
+        something_special: smtSpecial,
+      }
+    })
+  }
+
+  const resetDataHandler = () => {
+    setQuestionData(initalData)
+  }
+
+  const initTokenHandler = () => {
+    const storage = window.localStorage
+    const tokenName = 'redberry_token'
+    let token = storage.getItem(tokenName)
+    if (!token) {
+      token = 'd1ab938f-4422-4e09-a5ce-e25b4502a136'
+      storage.setItem(tokenName, token)
+    }
+
+    setQuestionData((prev) => {
+      return {
+        ...prev,
+        token: token,
+      }
+    })
+  }
+
+  const getFormattedData = () => {
+    let obj = { ...questionData }
+    if (!obj.had_covid_at) {
+      delete obj.had_covid_at
+    }
+    if (!obj.vaccinated_at) {
+      delete obj.vaccinated_at
+    }
+    return obj;
+  }
+
   const [questionData, setQuestionData] = useState(initalData)
 
   return (
@@ -55,6 +144,11 @@ export const QuestionsContextProvider = (props) => {
         questionData,
         setPersonalInformationHandler,
         setSkillsHandler,
+        setCovidHandler,
+        setRedberryInsightHandler,
+        resetDataHandler,
+        initTokenHandler,
+        getFormattedData
       }}
     >
       {props.children}

@@ -1,17 +1,24 @@
-import { useNavigate } from "react-router"
+import { useContext } from 'react'
+import { useNavigate } from 'react-router'
+import QuestionsContext from '../../store/questions-context'
 import styles from './Questionnaire.module.css'
 
 function Questionnaire() {
- const navigate = useNavigate()
+  const context = useContext(QuestionsContext)
+  const navigate = useNavigate()
 
-    const questionChangeHandler = () => {
-        navigate('/PersonalInformation')
-    }
+  const questionChangeHandler = () => {
+    context.resetDataHandler()
+    context.initTokenHandler();
+    navigate('/PersonalInformation')
+  }
 
   return (
     <div className={styles.questionnaireContainer}>
       <h1 className={styles.header}>Welcome Rocketeer !</h1>
-      <button className={styles.btn} onClick={questionChangeHandler}>Start Questionnaire</button>
+      <button className={styles.btn} onClick={questionChangeHandler}>
+        Start Questionnaire
+      </button>
       <button className={styles.submitedUserBtn}>Submitted Applications</button>
       <div className={styles.rocketman}></div>
     </div>
