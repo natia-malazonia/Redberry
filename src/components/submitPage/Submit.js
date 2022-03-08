@@ -9,7 +9,7 @@ function Submit() {
     }
 
     const submitHandler = ()=> {
-
+        navigate('/thanks-giving-page')
     }
 
     return <div className={styles.submitContainer}>

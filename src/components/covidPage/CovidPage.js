@@ -82,7 +82,7 @@ function CovidPage() {
                   setSelectedWorkPreference(workPreferences.hybrid)
                 }}
               />
-              <label htmlFor="home">Hybrid</label>
+              <label htmlFor="hybrid">Hybrid</label>
             </div>
           </div>
 

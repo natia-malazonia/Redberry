@@ -15,12 +15,9 @@
   font-size: 18px;
 }
 
-.devTalk > div > input {
-  font-size: 14px;
-}
-
 .devTalk > div > label {
   margin-left: 10px;
+  cursor: pointer;
 }
 
 .talkAbout {
@@ -54,5 +51,18 @@
 }
 
 .inpurRadioBtn {
-    cursor: pointer;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.errorText {
+  width: 209px;
+  height: 16px;
+  margin-left: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400 !important;
+  font-size: 11px !important;
+  line-height: 13px !important;
+  color: #fe3b1f !important;
 }

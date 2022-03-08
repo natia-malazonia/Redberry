@@ -1,17 +1,35 @@
 import { useState } from 'react'
+import useInput from '../../hooks/useInput'
 import BaseLayout from '../../UI/BaseLayout'
 import styles from './RedberryInsight.module.css'
 
 function RedberryInsight() {
-  const [devTalkAllow, setDevTalkAllow] = useState()
+  const [devTalkAllow, setDevTalkAllow] = useState(null)
 
-  function formIsValid() {}
+  const {
+    value: devTalkAbout,
+    isValid: devTalkAboutIsValid,
+    valueChangeHandler: devTalkAboutChangeHandler,
+    inputBlurHandler: devTalkAboutBlurHandler,
+  } = useInput((value) => value.trim() !== '')
+
+  const {
+    value: saySmthSpecial,
+    isValid: saySmthSpecialIsValid,
+    valueChangeHandler: saySmthSpecialChangeHandler,
+    inputBlurHandler: saySmthSpecialBlurHandler,
+  } = useInput((value) => value.trim() !== '')
+
+  function formIsValid() {
+    return devTalkAllow !== null && devTalkAboutIsValid && saySmthSpecialIsValid
+  }
 
   return (
     <BaseLayout
       pageNumber={4}
+      errorMessage="*All questions must be answered"
       previousPageUrl={'/covid-page'}
-      nextPageUrl={'/'}
+      nextPageUrl={'/submit-page'}
       allowNextPage={formIsValid()}
       leftSideHeader={'What about you?'}
       rightSideHeader={'Redberrian Insights'}
@@ -26,7 +44,9 @@ function RedberryInsight() {
        talks in the office but you can join our Zoom broadcast as 
        well. Feel free to join either as an attendee or a speaker!`}
     >
+     
       <form>
+    
         <div className={styles.devTalk}>
           <p>Would you attend Devtalks and maybe also organize your own?</p>
           <div>
@@ -34,7 +54,7 @@ function RedberryInsight() {
               className={styles.inpurRadioBtn}
               type="radio"
               id="devTalkYes"
-              name="devTalkYes"
+              name="devTalk"
               value={devTalkAllow}
               onClick={(event) => {
                 setDevTalkAllow(true)
@@ -48,7 +68,7 @@ function RedberryInsight() {
               className={styles.inpurRadioBtn}
               type="radio"
               id="devTalkNo"
-              name="devTalkNo"
+              name="devTalk"
               value={devTalkAllow}
               onClick={(event) => {
                 setDevTalkAllow(false)
@@ -61,14 +81,24 @@ function RedberryInsight() {
         <div className={styles.talkAbout}>
           <p>What would you speak about at Devtalk?</p>
           <div>
-            <textarea placeholder="I would..."></textarea>
+            <textarea
+              placeholder="I would..."
+              value={devTalkAbout}
+              onChange={devTalkAboutChangeHandler}
+              onBlur={devTalkAboutBlurHandler}
+            ></textarea>
           </div>
         </div>
 
         <div className={styles.smthSpecial}>
           <p>Tell us something special</p>
           <div>
-            <textarea placeholder="I..."></textarea>
+            <textarea
+              placeholder="I..."
+              value={saySmthSpecial}
+              onChange={saySmthSpecialChangeHandler}
+              onBlur={saySmthSpecialBlurHandler}
+            ></textarea>
           </div>
         </div>
       </form>

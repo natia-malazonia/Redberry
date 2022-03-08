@@ -37,6 +37,11 @@
 .vaccineDate > div > label {
   font-size: 14px;
   margin-left: 7px;
+  cursor: pointer;
+}
+
+.workEnvironment > div > input {
+  cursor: pointer;
 }
 
 .workEnvironment > div,
@@ -108,10 +113,3 @@
   line-height: 13px !important;
   color: #fe3b1f !important;
 }
-
-/* input[type='date']::-webkit-inner-spin-button,
- input[type='date']::-webkit-calendar-picker-indicator
-  {
-  display: none;
-  -webkit-appearance: none;
-} */
