@@ -21,6 +21,7 @@ function Submit() {
       body: JSON.stringify(context.getFormattedData()),
     })
     if(response.status === 201){
+        context.resetDataHandler();
         navigate('/thanks-giving-page')
         return;
     } 
