@@ -7,6 +7,7 @@ import CovidPage from './components/covidPage/CovidPage'
 import RedberryInsight from './components/redberryInsight/RedberryInsight'
 import Submit from './components/submitPage/Submit'
 import ThanksGiving from './components/thanksGivingPage/ThanksGiving'
+import SubmittedApplication from './components/submittedApplications/SubmittedApplication'
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         <Route path="/redberry-insight" element={<RedberryInsight />}></Route>
         <Route path="/submit-page" element={<Submit />}></Route>
         <Route path="/thanks-giving-page" element={<ThanksGiving />}></Route>
+        <Route
+          path="/submitted-applications-page"
+          element={<SubmittedApplication />}
+        ></Route>
       </Routes>
     </div>
   )

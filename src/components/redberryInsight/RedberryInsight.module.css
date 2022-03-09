@@ -31,6 +31,7 @@
   padding-left: 23px;
   padding-top: 24px;
   margin-top: 11px;
+  resize: none;
 }
 
 .smthSpecial > div > textarea {

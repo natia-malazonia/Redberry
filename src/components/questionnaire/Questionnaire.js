@@ -9,8 +9,12 @@ function Questionnaire() {
 
   const questionChangeHandler = () => {
     context.resetDataHandler()
-    context.initTokenHandler();
+    context.initTokenHandler()
     navigate('/PersonalInformation')
+  }
+
+  const submittedUserChangeHandler = () => {
+    navigate('/submitted-applications-page')
   }
 
   return (
@@ -19,7 +23,12 @@ function Questionnaire() {
       <button className={styles.btn} onClick={questionChangeHandler}>
         Start Questionnaire
       </button>
-      <button className={styles.submitedUserBtn}>Submitted Applications</button>
+      <button
+        onClick={submittedUserChangeHandler}
+        className={styles.submitedUserBtn}
+      >
+        Submitted Applications
+      </button>
       <div className={styles.rocketman}></div>
     </div>
   )

@@ -1,0 +1,158 @@
+.submittedApplicationContainer {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.topRow,
+.downRow {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 36px;
+}
+
+.downRow {
+  margin-left: 81px;
+  justify-content: space-around;
+}
+
+.personalInfo {
+  margin-left: 329px;
+}
+
+.skillset {
+  margin-left: 487px;
+}
+
+.personalInfo,
+.skillset {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+}
+
+.personalInfo > h4,
+.skillset > h4,
+.covidPage > h4,
+.insight > h4 {
+  font-size: 18px;
+  color: #fe3b1f;
+  text-decoration: underline;
+  margin-bottom: 44px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.personalInfo > div,
+.skillset > div {
+  font-size: 12px;
+  color: #000000;
+  margin-bottom: 14px;
+  width: 300px;
+  height: 42px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.personalInfo > div > div:nth-child(1),
+.skillset > div > div:nth-child(1) {
+  margin-right: 26.83px;
+  width: 102px;
+  height: 42px;
+  font-weight: 400;
+}
+
+.personalInfo > div > div:nth-child(2),
+.skillset > div > div:nth-child(2) {
+  height: 24px;
+  width: 139.71px;
+}
+
+.covidDetails > div,
+.covidContact > div,
+.contactDate,
+.vaccine,
+.vaccineDate {
+  color: #000000;
+  width: 300px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.downRow > div {
+  margin-bottom: 14px;
+}
+
+.covidPage > div,
+.covidDetails > div > p,
+.covidDetails > div > div,
+.covidContact > div > p,
+.covidContact > div > div,
+.contactDate > p,
+.vaccine > p,
+.vaccine > div,
+.vaccineDate > p,
+.insight > div > p,
+.insight > div > div {
+  margin-bottom: 14px;
+}
+
+.covidDetails > div > p,
+.covidContact > div > p,
+.contactDate > p,
+.vaccine > p,
+.vaccineDate > p,
+.insight > div > p {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.talkAbout {
+  margin-top: 64px;
+}
+
+.datePickerInput {
+  width: 455px;
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #525557;
+  box-sizing: border-box;
+  padding-left: 57px;
+  margin-bottom: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.calendarLogo_1,
+.calendarLogo_2 {
+  width: 16px;
+  height: 18px;
+  position: absolute;
+  top: 746px;
+  left: 740px;
+}
+
+.calendarLogo_2 {
+  top: 994px;
+}
+
+.covidDetails > div > div,
+.covidContact > div > div,
+.vaccine > div {
+  margin-left: 10px;
+}
+
+.covidDetails > div > div > input,
+.covidContact > div > div > input,
+.vaccine > div > input {
+  margin-right: 5px;
+}
+
+.talkAbout > div > textarea,
+.smthSpecial > div > textarea {
+  width: 447px;
+  height: 122px;
+  resize: none;
+}
