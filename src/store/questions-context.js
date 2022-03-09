@@ -126,6 +126,11 @@ export const QuestionsContextProvider = (props) => {
     if (!obj.vaccinated_at) {
       delete obj.vaccinated_at
     }
+
+    if (!obj.phone) {
+      delete obj.phone
+    }
+
     return obj
   }
 

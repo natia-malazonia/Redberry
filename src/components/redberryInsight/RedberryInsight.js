@@ -8,7 +8,7 @@ function RedberryInsight() {
   const context = useContext(QuestionsContext)
 
   const [devTalkAllow, setDevTalkAllow] = useState(
-    context.questionData.will_organize_devtalk,
+    context.questionData.will_organize_devtalk
   )
 
   const {
@@ -33,7 +33,7 @@ function RedberryInsight() {
 
   function formIsValid() {
     return (
-      devTalkAllow !== undefined && devTalkAboutIsValid && saySmthSpecialIsValid
+      devTalkAllow !== '' && devTalkAboutIsValid && saySmthSpecialIsValid
     )
   }
 

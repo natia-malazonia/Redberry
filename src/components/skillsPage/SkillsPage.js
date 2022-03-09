@@ -18,6 +18,7 @@ function SkillsPage() {
     valueChangeHandler: experienceInYearsChangedHandler,
     inputBlurHandler: experienceInYearsBlurHandler,
     isTouched: experienceInYearsIsTouched,
+    resetHandler: experienceResetHandler
   } = useInput(
     (value) =>
       value.trim().length > 0 && !isNaN(value.trim()) && value % 1 === 0,
@@ -115,6 +116,7 @@ function SkillsPage() {
           id="skills"
           className={styles.select}
           onChange={(event) => {
+            experienceResetHandler();
             setSelectedSkillValue(event.target.value)
           }}
         >
@@ -162,14 +164,7 @@ function SkillsPage() {
               </div>
             )
           })}
-          {/* <div className={styles.skill}>
-            PHP Years of Experience: 3{' '}
-            <button className={styles.skillBtn}>-</button>
-          </div>
-          <div className={styles.skill}>
-            React Year of Experience: 2{' '}
-            <button className={styles.skillBtn}>-</button>
-          </div> */}
+         
         </div>
       </form>
     </BaseLayout>
