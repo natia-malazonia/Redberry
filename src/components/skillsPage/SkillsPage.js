@@ -18,7 +18,10 @@ function SkillsPage() {
     valueChangeHandler: experienceInYearsChangedHandler,
     inputBlurHandler: experienceInYearsBlurHandler,
     isTouched: experienceInYearsIsTouched,
-  } = useInput((value) => value.trim().length > 0 && !isNaN(value.trim()))
+  } = useInput(
+    (value) =>
+      value.trim().length > 0 && !isNaN(value.trim()) && value % 1 === 0,
+  )
 
   useEffect(() => {
     async function getSkills() {

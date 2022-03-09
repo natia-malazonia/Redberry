@@ -36,7 +36,7 @@ const QuestionsContext = React.createContext({
   ) => {},
   resetDataHandler: () => {},
   initTokenHandler: () => {},
-  getFormattedData: () => {}
+  getFormattedData: () => {},
 })
 
 export const QuestionsContextProvider = (props) => {
@@ -110,18 +110,10 @@ export const QuestionsContextProvider = (props) => {
   }
 
   const initTokenHandler = () => {
-    const storage = window.localStorage
-    const tokenName = 'redberry_token'
-    let token = storage.getItem(tokenName)
-    if (!token) {
-      token = userToken
-      storage.setItem(tokenName, token)
-    }
-
     setQuestionData((prev) => {
       return {
         ...prev,
-        token: token,
+        token: userToken,
       }
     })
   }
@@ -134,7 +126,7 @@ export const QuestionsContextProvider = (props) => {
     if (!obj.vaccinated_at) {
       delete obj.vaccinated_at
     }
-    return obj;
+    return obj
   }
 
   const [questionData, setQuestionData] = useState(initalData)
@@ -149,7 +141,7 @@ export const QuestionsContextProvider = (props) => {
         setRedberryInsightHandler,
         resetDataHandler,
         initTokenHandler,
-        getFormattedData
+        getFormattedData,
       }}
     >
       {props.children}

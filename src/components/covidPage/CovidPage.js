@@ -39,7 +39,8 @@ function CovidPage() {
 
   function formIsValid() {
     return (
-      (hadContact ? covidContactDate : true) &&
+      hadContact !== '' && hadVaccine !== '' &&
+      (hadContact ? covidContactDate : true) && 
       (hadVaccine ? vaccineDate : true) &&
       selectedWorkPreference
     )
