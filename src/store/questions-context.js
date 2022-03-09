@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { userToken } from '../environment'
 
 const initalData = {
   token: '',
@@ -113,7 +114,7 @@ export const QuestionsContextProvider = (props) => {
     const tokenName = 'redberry_token'
     let token = storage.getItem(tokenName)
     if (!token) {
-      token = 'd1ab938f-4422-4e09-a5ce-e25b4502a136'
+      token = userToken
       storage.setItem(tokenName, token)
     }
 

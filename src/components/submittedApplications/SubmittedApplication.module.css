@@ -1,30 +1,33 @@
 .submittedApplicationContainer {
   display: flex;
   flex-flow: column wrap;
+  padding-bottom: 155px;
+}
+.accordion {
+  width: 1154px;
+  margin-bottom: 11px;
+}
+.accordionSummary {
+  background-color: #fe3b1f !important;
+  color: #ffffff !important;
 }
 
 .topRow,
 .downRow {
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-around;
   margin-top: 36px;
 }
 
-.downRow {
-  margin-left: 81px;
-  justify-content: space-around;
-}
-
-.personalInfo {
-  margin-left: 329px;
-}
-
-.skillset {
-  margin-left: 487px;
+.covidPage,
+.insight {
+  width: 447px;
 }
 
 .personalInfo,
 .skillset {
+  width: 447px;
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
@@ -75,16 +78,17 @@
 .vaccine,
 .vaccineDate {
   color: #000000;
-  width: 300px;
   display: flex;
   flex-flow: column wrap;
 }
-
+.contactDate,
+.vaccineDate {
+  position: relative;
+}
 .downRow > div {
   margin-bottom: 14px;
 }
 
-.covidPage > div,
 .covidDetails > div > p,
 .covidDetails > div > div,
 .covidContact > div > p,
@@ -96,6 +100,9 @@
 .insight > div > p,
 .insight > div > div {
   margin-bottom: 14px;
+}
+.covidPage > div {
+  margin-bottom: 51px;
 }
 
 .covidDetails > div > p,
@@ -113,13 +120,12 @@
 }
 
 .datePickerInput {
-  width: 455px;
+  width: 349px;
   height: 54px;
   background: #ffffff;
   border: 1px solid #525557;
   box-sizing: border-box;
   padding-left: 57px;
-  margin-bottom: 5px;
   font-family: 'Montserrat', sans-serif;
   font-style: italic;
   font-weight: 400;
@@ -130,23 +136,14 @@
   width: 16px;
   height: 18px;
   position: absolute;
-  top: 746px;
-  left: 740px;
-}
-
-.calendarLogo_2 {
-  top: 994px;
-}
-
-.covidDetails > div > div,
-.covidContact > div > div,
-.vaccine > div {
-  margin-left: 10px;
+  bottom: 16px;
+  left: 308px;
 }
 
 .covidDetails > div > div > input,
 .covidContact > div > div > input,
-.vaccine > div > input {
+.vaccine > div > input,
+.devTalk > div > input {
   margin-right: 5px;
 }
 
@@ -155,4 +152,61 @@
   width: 447px;
   height: 122px;
   resize: none;
+}
+
+.smthSpecial > div > textarea {
+  height: 89px;
+}
+
+.submittedContainer {
+  background: radial-gradient(50% 50% at 50% 50%, #0c0d0e 0%, #151718 73.44%);
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerText > h2 {
+  font-family: 'Rowdies';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 56px;
+  line-height: 70px;
+  letter-spacing: 0.11em;
+  color: #ffffff;
+}
+
+.headerText {
+  width: 1128px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  margin-top: 94px;
+  margin-bottom: 55px;
+}
+
+input[type='radio'] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[type='radio']:checked + .radioCheckMark {
+  background: url('../../assets/images/radio-btn-active.png');
+}
+
+.radioCheckMark {
+  background: url('../../assets/images/radio-btn-passive.png');
+  display: inline;
+  top: 1px;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  background-size: contain !important;
+}
+
+.inputContainer {
+  position: relative;
 }

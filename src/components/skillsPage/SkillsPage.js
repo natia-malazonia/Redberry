@@ -28,6 +28,7 @@ function SkillsPage() {
       const data = await response.json()
       setSkillsList(data)
     }
+
     getSkills()
   }, [])
 
@@ -148,9 +149,12 @@ function SkillsPage() {
                   onClick={() => {
                     removeSkillHandler(item.id)
                   }}
-                  className={styles.skillBtn}
                 >
-                  -
+                  <img
+                    src={require('../../assets/images/Remove.png')}
+                    alt="remove"
+                    className={styles.removeBtn}
+                  ></img>
                 </button>
               </div>
             )
